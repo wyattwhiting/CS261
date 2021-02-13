@@ -4,7 +4,7 @@ This assignment consisted of two parts. Each part is a use of dynamic array stru
 
 ## Part 1: Convert a Bag to a Set
 
-Here, the function `void bag2set(struct DynArr *da)` calls functions from `dynArray.c` to convert a bag to a set. A bag may have multiple instances of the same value, but a set has no repeated instances. For example, a bag `(1, 3, 4, 4, 5`, when converted to a set, would be `(1, 3, 4, 5)`. 
+Here, the function `void bag2set(struct DynArr *da)` calls functions from `dynArray.c` to convert a bag to a set. A bag may have multiple instances of the same value, but a set has no repeated instances. For example, a bag `(1, 3, 3, 4, 4, 5)`, when converted to a set, would be `(1, 3, 4, 5)`. 
 The datatype used in this implemention of a dynamic array is `double`.
 
 
@@ -22,6 +22,8 @@ Some examples of unbalanced strings are
 - "[x + (y + z)" 
 - "[x + (y + z])"
 - "( [ ) ]"
+
+The datatype in this implementation of a dynamic array is `char`.
 
 ### Assignment grade
 100/100
