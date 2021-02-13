@@ -1,0 +1,28 @@
+given pointer to queue, let's call it q 
+
+make dlink pointer 'currlink', set it to q->sentinel->next
+make dlink pointer 'nextlink' to save following elememt, currlink->next
+while(nextlink != q->backsentinel)
+{
+    free(currlink)
+    currlink = nextlink
+    nextlink = currlink->next
+}
+
+
+/* one left over by above loop, so take care of that one explicitely */
+
+free(q->frontsentinal->next)
+
+
+/* after here, all non-sentinal elements have been freed */
+
+/* free the sential links */
+free(q->frontsentinal)
+free(q->backsentinal)
+
+/* all the links have now been freed, just need to get rid of DList
+
+free(q)
+
+/* all the links and structures have been freed from memory
