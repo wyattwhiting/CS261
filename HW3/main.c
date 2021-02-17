@@ -18,8 +18,32 @@ char* getWord(FILE *file); /* prototype */
 
 /****************************************/
 
-int main (int argc, const char * argv[]) {
+int main (int argc, const char * argv[]) 
+{
     /*Write this function*/
+
+    /* declare variables */
+    hashMap map;
+    char * word;
+    FILE * fp;
+
+    /* initialize map and open file from command line string argument */
+    initMap(&map, 50); 
+    fp = fopen(argv[1], "r");
+
+    /* seed with first word from file */
+    for(word = getWord(fp); word != NULL; word = getWord(fp))
+    {
+        insertMap(&map, word, 1);
+        free(word);
+    }
+
+    printf("links: %d \n", sizeMap(&map));
+
+    /* free map at end of program, close file, and return 0 */
+    fclose(fp);
+    freeMap(&map);
+    return 0;
 }
 
 

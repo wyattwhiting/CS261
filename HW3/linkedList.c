@@ -99,12 +99,13 @@ void popLinkedList(LinkedList *l) {
 
 void addLinkedList (LinkedList *l, TYPE val)
 {
-  pushLinkedList(l,val);
+    pushLinkedList(l,val);
 }
 
 int containsLinkedList(LinkedList *l, TYPE val)
 {
 /* write this function */
+    return 0;
 }
 
 void _removeLink(struct Link *prev, struct Link *cur)

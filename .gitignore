@@ -1,0 +1,6 @@
+# ignore all non-source files
+!*.c
+!*.md
+!*.h
+!*.txt
+!Makefile
