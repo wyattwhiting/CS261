@@ -15,6 +15,7 @@
  to free this memory when you no longer need it.
  */
 char* getWord(FILE *file); /* prototype */
+void printHashMap(struct hashMap * ht); /* prototype */
 
 /****************************************/
 
@@ -27,18 +28,29 @@ int main (int argc, const char * argv[])
     char * word;
     FILE * fp;
 
+    /* check for number of command line arguments */
+    if(argc != 2)
+    {
+        printf("You did not specify the correct number of command line arguments. \n");
+        return 0;
+    }
+
     /* initialize map and open file from command line string argument */
     initMap(&map, 50); 
     fp = fopen(argv[1], "r");
 
     /* seed with first word from file */
     for(word = getWord(fp); word != NULL; word = getWord(fp))
-    {
+    {   
         insertMap(&map, word, 1);
         free(word);
     }
 
+    /* word count */
     printf("links: %d \n", sizeMap(&map));
+
+    /* print the (key, value) pairs */
+    printHashMap(&map);
 
     /* free map at end of program, close file, and return 0 */
     fclose(fp);

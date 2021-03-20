@@ -1,10 +1,12 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "hashMap.h"
 #include "structs.h"
 #include <string.h>
 
 /* extra prototype */
 hashLink * getLinkPointer(struct hashMap * ht, KeyType k);
+void printHashMap(struct hashMap * ht);
 
 
 int stringHash1(char * str)
@@ -74,7 +76,7 @@ void insertMap (struct hashMap * ht, KeyType k, ValueType v)
 
     /* if it already exists, just replace the value */
     if(newLink != NULL)
-        newLink->value = v;
+        newLink->value += v;
     /* otherwise, if it doesn't exist */
     else
     {
@@ -208,4 +210,27 @@ hashLink * getLinkPointer(struct hashMap * ht, KeyType k)
 
     /* return null if none are found */
     return NULL;
+}
+
+/* function to print out the (key, value) pairs from all links */
+void printHashMap(struct hashMap * ht)
+{
+    /* some variables */
+    int bucket;
+    hashLink * currLink;
+
+    /* loop through all buckets */
+    for(bucket = 0; bucket < ht->tableSize; bucket++)
+    {
+        /* set currLink to first (potential) link */
+        currLink = ht->table[bucket];
+
+        /* loop through until end is reached */
+        while(currLink != NULL)
+        {
+            /* print out value, update pointer to next node */
+            printf("%s: %d \n", currLink->key, currLink->value);
+            currLink = currLink->next;
+        }
+    }
 }
